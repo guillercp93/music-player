@@ -1,7 +1,4 @@
 import React from 'react';
-const electron = window.require("electron");
-
-const ipc = electron.ipcRenderer;
 
 class Settings extends React.Component {
     constructor(props) {
@@ -10,7 +7,6 @@ class Settings extends React.Component {
             path: "",
         };
         this.getPath = this.getPath.bind(this);
-        this.synchronizeMusic = this.synchronizeMusic.bind(this);
     }
     getPath(event) {
         const textRoute = document.getElementById("text-route");
@@ -19,10 +15,6 @@ class Settings extends React.Component {
         this.setState({
             path
         });
-    }
-
-    synchronizeMusic() {
-        ipc.send('synchronizeMusic', this.state.path);
     }
 
     render() {
@@ -42,7 +34,7 @@ class Settings extends React.Component {
                         <span id="text-route"></span>
                     </div>
                     <div className="input-group">
-                        <button type="button" onClick={this.synchronizeMusic}>Synchronize</button>
+                        <button type="button" onClick={() => this.props.fn(this.state.path)}>Synchronize</button>
                     </div>
                 </form>
             </div>);

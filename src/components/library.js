@@ -1,13 +1,29 @@
 import React from 'react';
 import { BrowserRouter, NavLink, Redirect, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { setPlaylist, synchronizeSongs } from '../store_manager/actions'
 import TabAlbums from './tab.albums';
 // import TabArtists from './tab.artists';
 import TabSettings from './tab.settings';
 import TabSongs from './tab.songs';
-import './library.css'
+import './library.css';
+
+const mapToStateToProps = (state) => {
+    return {
+        songs: state.songs,
+        albums: state.albums,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setPlayList: (filter) => dispatch(setPlaylist(filter)),
+        setSynchro: (path) => dispatch(synchronizeSongs(path))
+    }
+}
 
 const Library = (props) => {
-    const {fn} = props;
+    const {songs, albums, setPlayList, setSynchro} = props;
 
     return (
         <BrowserRouter>
@@ -19,10 +35,10 @@ const Library = (props) => {
                     <NavLink activeClassName="active" to="/settings">Settings</NavLink>
                 </div>
                 <Switch>
-                    <Route path="/songs" render={(props) => <TabSongs fn={fn} />} />
-                    <Route path="/albums" render={(props) => <TabAlbums fn={fn} />} />
+                    <Route path="/songs" render={(props) => <TabSongs fn={setPlayList} songs={songs} />} />
+                    <Route path="/albums" render={(props) => <TabAlbums fn={setPlayList} albums={albums} />} />
                     {/* <Route path="/artists" component={TabArtists} /> */}
-                    <Route path="/settings" component={TabSettings} />
+                    <Route path="/settings" render={(props) => <TabSettings fn={setSynchro} />} />
                     <Redirect to="/songs" />
                 </Switch>
             </div>
@@ -30,4 +46,4 @@ const Library = (props) => {
     );
 }
 
-export default Library;
+export default connect(mapToStateToProps, mapDispatchToProps)(Library);

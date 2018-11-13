@@ -46,7 +46,15 @@ artists.persistence.compactDatafile();
  * @param {Function} callback 
  */
 function getSongs(params, callback) {
-    return songs.find(params).sort({album: 1, title: 1}).exec(callback);
+    let {skip} = params;
+    if (skip)
+        delete params["skip"];
+
+    return songs.find(params)
+            .sort({album: 1, title: 1})
+            .skip(skip || 0)
+            .limit(50)
+            .exec(callback);
 }
 
 function getAlbums(params, callback) {

@@ -12,8 +12,12 @@
     "node-notifier": "5.3.0",
     "react": "16.5.2",
     "react-dom": "16.5.2",
+    "react-redux": "^5.1.0",
     "react-router-dom": "4.3.1",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,7 +27,7 @@
     "electron": "electron .",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=images/icon.jpg --prune=true --out=release-builds",
     "package-win": "electron-packager . music-player --overwrite --platform win32 --arch x64 --out release-builds/",
-    "package-linux": "electron-packager . music-player --overwrite --asar=true --platform=linux --arch=x64 --icon=images/icon.jpg --prune=true --out=release-builds"
+    "package-linux": "electron-packager . music-player --overwrite --platform=linux --arch=x64 --icon=build/images/icon.jpg --out=release-builds"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getSongs } from '../store_manager/actions'
 
 const Card = (props) => {
     const style = { backgroundImage: `url(data:image/png;base64,${props.image})` };
@@ -52,4 +54,57 @@ const Row = (props) => {
     );
 }
 
-export { Card, Avatar, Row };
+class PaginationComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            page: 1,
+        }
+        this.prevPage = this.prevPage.bind(this);
+        this.nextPage = this.nextPage.bind(this);
+    }
+
+    prevPage() {
+        let actualPage = this.state.page - 1;
+        if (actualPage > 0) {
+            this.props.getSongs(actualPage);
+            this.setState({
+                page: actualPage
+            });
+        }
+    }
+
+    nextPage() {
+        let actualPage = this.state.page + 1;
+        this.props.getSongs(actualPage);
+        this.setState({
+            page: actualPage
+        });
+    }
+
+    render() {
+        return (
+            <div className="pagination">
+                <button type="button" onClick={this.prevPage}>
+                    <i className="fa fa-arrow-circle-left"></i>
+                    <span>Previus</span>
+                </button>
+                <span>{this.state.page}</span>
+                <button type="button" onClick={this.nextPage}>
+                    <i className="fa fa-arrow-circle-right"></i>
+                    <span>Next</span>
+                </button>
+            </div>
+        );
+    }
+}
+
+const mapToDispatchToProps = (dispatch) => {
+    return {
+        getSongs: (page) => dispatch(getSongs({skip: (page-1)*50 }))
+    }
+}
+
+const Pagination = connect(null, mapToDispatchToProps)(PaginationComponent);
+
+export { Card, Avatar, Row,  Pagination};

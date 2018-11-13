@@ -1,5 +1,6 @@
 import React from "react";
 import moment from 'moment';
+import { connect } from 'react-redux';
 import default_image from './default_image';
 import './player.css';
 class Player extends React.Component {
@@ -152,4 +153,10 @@ class Player extends React.Component {
     }
 }
 
-export default Player;
+const mapToStateToProps = ({playlist}) => {
+    return {
+        playlist,
+    }
+}
+
+export default connect(mapToStateToProps)(Player);
