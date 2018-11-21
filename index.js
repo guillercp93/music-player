@@ -1,16 +1,21 @@
-const {app, BrowserWindow} = require('electron');
+const electron = require('electron');
 const path = require('path');
 require('./events');
 
+const { app, BrowserWindow } = electron;
 let mainWindow;
 
 function createWindow() {
+    const mainScreen = electron.screen.getPrimaryDisplay();
+
     mainWindow = new BrowserWindow({
-        width: 1280,
-        height: 720,
+        width: mainScreen.size.width,
+        height: mainScreen.size.height,
         frame: false,
         transparent: true,
-        fullscreen: true,
+        fullscreenable: true,
+        icon: path.join(__dirname, 'public', 'images', 'icon.png')
+        // fullscreen: true,
     });
 
     mainWindow.loadFile(path.join(__dirname, 'build', 'index.html'));
