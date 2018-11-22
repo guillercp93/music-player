@@ -1,5 +1,6 @@
 const electron = require('electron');
 const path = require('path');
+const url = require('url');
 require('./events');
 
 const { app, BrowserWindow } = electron;
@@ -14,13 +15,19 @@ function createWindow() {
         frame: false,
         transparent: true,
         fullscreenable: true,
-        icon: path.join(__dirname, 'public', 'images', 'icon.png')
-        // fullscreen: true,
+        icon: path.join(__dirname, 'public', 'images', 'icon.png'),
+        show: false
     });
 
-    mainWindow.loadFile(path.join(__dirname, 'build', 'index.html'));
+    mainWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'build', 'index.html'),
+        protocol: 'file',
+        slashes: true
+    }));
 
     // mainWindow.webContents.openDevTools();
+
+    mainWindow.on('ready-to-show', () => mainWindow.show());
 
     mainWindow.on('close', () => {
         mainWindow = null;
@@ -47,3 +54,8 @@ app.on('before-quit', () => {
         mainWindow.close();
     }
 });
+
+if (process.platform === 'win32') {
+    app.commandLine.appendSwitch('high-dpi-support', 'true');
+    app.commandLine.appendSwitch('force-device-scale-factor', '1');
+}

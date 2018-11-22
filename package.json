@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/guillercp93/music-player/issues"
   },
-  "homepage": "https://github.com/guillercp93/music-player#readme",
+  "homepage": "./",
   "author": "guillercp93 <guillercp93@gmail.com>",
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.4.1",

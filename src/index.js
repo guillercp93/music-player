@@ -17,26 +17,18 @@ const store = createStore(MusicApp, applyMiddleware(
     loggerMiddleware
 ));
 
-class Index extends React.PureComponent {
-    componentDidMount() {
-        store.dispatch(getSongs());
-        store.dispatch(getAlbums());
-        store.dispatch(canGetSongs());
-    }
-
-    render() {
-        return (
-            <Provider store={store}>
-                <App />
-            </Provider>
-        );
-    }
-}
-
-ReactDOM.render(<Index />,
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById('root')
 );
 
+window.onload = () => {
+    store.dispatch(getSongs());
+    store.dispatch(getAlbums());
+    store.dispatch(canGetSongs());
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
