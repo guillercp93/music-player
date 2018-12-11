@@ -37,7 +37,7 @@
     "electron": "electron .",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=public/images/icon.png --prune=true --out=release-builds/",
     "package-win": "electron-packager . music-player --overwrite --platform=win32 --icon=public/images/icon.ico --arch=x64 --out=release-builds/ --prune=true",
-    "package-linux": "electron-packager . music-player --overwrite --platform=linux --arch=x64 --icon=public/images/icon.png --out=release-builds/ --prune=true",
+    "package-linux": "electron-packager . music-player --overwrite --platform=linux --arch=x64 --icon=public/images/icon.png --out=release-builds/ --prune=true"
   },
   "eslintConfig": {
     "extends": "react-app"
