@@ -6,6 +6,7 @@ import TabAlbums from './tab.albums';
 // import TabArtists from './tab.artists';
 import TabSettings from './tab.settings';
 import TabSongs from './tab.songs';
+import { Search } from './elements';
 import './library.css';
 
 const mapToStateToProps = (state) => {
@@ -33,6 +34,7 @@ const Library = (props) => {
                     <NavLink activeClassName="active" to="/albums">Albums</NavLink>
                     {/* <NavLink activeClassName="active" to="/artists">Artists</NavLink> */}
                     <NavLink activeClassName="active" to="/settings">Settings</NavLink>
+                    <Search />
                 </div>
                 <Switch>
                     <Route path="/songs" render={(props) => <TabSongs fn={setPlayList} songs={songs} />} />

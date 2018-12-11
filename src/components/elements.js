@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getSongs } from '../store_manager/actions'
+import { getAlbums, getSongs } from '../store_manager/actions'
 
 const Card = (props) => {
     const style = { backgroundImage: `url(data:image/png;base64,${props.image})` };
@@ -54,6 +54,15 @@ const Row = (props) => {
     );
 }
 
+const SearchInput = (props) => (
+    <div className="search-box">
+        <input type="search" name="search" id="search" onChange={props.search}
+            placeholder="Find something..." aria-label="Find something"
+            autoComplete="off" />
+        <i className="fa fa-search"></i>
+    </div>
+);
+
 class PaginationComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -100,11 +109,40 @@ class PaginationComponent extends React.Component {
 }
 
 const mapToDispatchToProps = (dispatch) => {
+    
     return {
-        getSongs: (page) => dispatch(getSongs({skip: (page-1)*50 }))
+        getSongs: (page) => {
+            const search = document.getElementById('search');
+            const params = {
+                skip: (page-1)*50
+            }
+
+            if (search.value) {
+                params.title = search.value;
+                params.album = search.value;
+            }
+
+            return dispatch(getSongs(params))
+        },
+        search: (evt) => {
+            const value = evt.target.value;
+            if (value) {
+                dispatch(getSongs({
+                    title: value,
+                    album: value,
+                }));
+                dispatch(getAlbums({
+                    album: value
+                }));
+            } else {
+                dispatch(getSongs({}));
+                dispatch(getAlbums({}));
+            }
+        }
     }
 }
 
 const Pagination = connect(null, mapToDispatchToProps)(PaginationComponent);
+const Search = connect(null, mapToDispatchToProps)(SearchInput);
 
-export { Card, Avatar, Row,  Pagination};
+export { Card, Avatar, Row,  Pagination, Search};

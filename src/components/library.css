@@ -29,6 +29,25 @@
     transition: background-color .2s .1s;
 }
 
+.library .nav-tabs .search-box {
+    align-items: center;
+    background-color: white;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    margin: 0.5%;
+}
+
+.library .nav-tabs .search-box i,
+.library .nav-tabs .search-box input {
+    align-items: center;
+    border: none;
+    display: inline-flex;
+    height: 75%;
+    margin: 0;
+    padding: 0;
+}
+
 .library .tabs-horizontal {
     color: whitesmoke;
     display: flex;

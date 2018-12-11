@@ -6,7 +6,24 @@ const { getSongs, getArtists, getAlbums } = require('./database/index');
 const {synchronizeMusic} = require('./synchronize');
 
 ipcMain.on('serve-songs', (event, args) => {
-    getSongs(args, (err, documents) => {
+    const params = {};
+    if (Object.keys(args).length) {
+        params['$or'] = [];
+        for (const key in args) {
+            if (key === "skip") {
+                params.skip = args.skip;
+                continue;
+            }
+            params['$or'].push({
+                [key]: new RegExp(args[key], "i")
+            })
+        }
+        if (!params['$or'].length) {
+            delete params['$or'];
+        }
+    }
+    
+    getSongs(params, (err, documents) => {
         if (err) {
             event.returnValue = [];
             return;
@@ -16,7 +33,20 @@ ipcMain.on('serve-songs', (event, args) => {
 });
 
 ipcMain.on('serve-albums', (event, args) => {
-    getAlbums(args, (err, documents) => {
+    const params = {};
+    if (Object.keys(args).length) {
+        params['$or'] = [];
+        for (const key in args) {
+            if (key === "skip") {
+                params.skip = args.skip;
+                continue;
+            }
+            params['$or'].push({
+                [key]: new RegExp(args[key], "i")
+            })
+        }
+    }
+    getAlbums(params, (err, documents) => {
         event.returnValue = documents;
     });
 });

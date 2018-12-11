@@ -17,7 +17,7 @@ function songs(state = initialStore.songs, action) {
 function albums(state = initialStore.albums, action) {
     switch (action.type) {
         case GET_ALBUMS:
-            return ipc.sendSync('serve-albums', {});
+            return ipc.sendSync('serve-albums', action.params);
         default:
             return state;
     }

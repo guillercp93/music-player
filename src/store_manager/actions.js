@@ -11,9 +11,10 @@ export function getSongs(params={}) {
     };
 }
 
-export function getAlbums() {
+export function getAlbums(params={}) {
     return {
-        type: GET_ALBUMS
+        type: GET_ALBUMS,
+        params
     };
 }
 

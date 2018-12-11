@@ -47,9 +47,8 @@ artists.persistence.compactDatafile();
  */
 function getSongs(params, callback) {
     let {skip} = params;
-    if (skip)
+    if (skip >= 0)
         delete params["skip"];
-
     return songs.find(params)
             .sort({album: 1, title: 1})
             .skip(skip || 0)
