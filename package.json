@@ -16,19 +16,19 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.4.1",
     "disconnect": "1.2.1",
-    "moment": "2.22.2",
+    "moment": "2.29.4",
     "music-metadata": "3.1.4",
     "nedb": "1.8.0",
-    "node-notifier": "5.3.0",
+    "node-notifier": "5.4.5",
     "react": "16.5.2",
     "react-dom": "16.5.2",
     "react-redux": "^5.1.0",
     "react-router-dom": "4.3.1",
-    "react-scripts": "3.3.0",
+    "react-scripts": "5.0.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "snyk": "^1.294.0"
+    "@snyk/protect": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,7 +39,7 @@
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=public/images/icon.png --prune=true --out=release-builds/",
     "package-win": "electron-packager . music-player --overwrite --platform=win32 --icon=public/images/icon.ico --arch=x64 --out=release-builds/ --prune=true",
     "package-linux": "electron-packager . music-player --overwrite --platform=linux --arch=x64 --icon=public/images/icon.png --out=release-builds/ --prune=true",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepublish": "yarn run snyk-protect"
   },
   "eslintConfig": {
