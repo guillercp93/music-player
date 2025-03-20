@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --accent-color: #3b82f6;
+}
+
+.dark {
+  --text-primary: #f3f4f6;
+  --text-secondary: #d1d5db;
+  --bg-primary: #1f2937;
+  --bg-secondary: #111827;
+  --accent-color: #60a5fa;
+}
+
+/* Apply theme variables */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: color 200ms, background-color 200ms;
+}
+
+.card {
+  background-color: var(--bg-secondary);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.button-primary {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: opacity 200ms;
+}
+
+.button-primary:hover {
+  opacity: 0.9;
+}
+
+.button-secondary {
+  border: 1px solid #d1d5db;
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 200ms;
+}
+
+.button-secondary:hover {
+  background-color: #f5f5f5;
+}
