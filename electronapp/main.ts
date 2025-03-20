@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, screen } from 'electron';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { setupIpcMain } from './ipcMain.js';
@@ -10,9 +10,11 @@ const __dirname = path.dirname(__filename);
 let mainWindow: BrowserWindow | null = null;
 
 const createWindow = (): void => {
+  const { width, height } = screen.getPrimaryDisplay().size;
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: width/3,
+    height,
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: false,
@@ -28,6 +30,10 @@ const createWindow = (): void => {
     // In production, load the built index.html file from the renderer output folder
     const indexPath = path.join(__dirname, '../dist-renderer/public/index.html');
     mainWindow.loadFile(indexPath);
+
+    mainWindow?.webContents.on('did-fail-load', () => {
+      mainWindow?.loadURL(`file://${path.join(__dirname, '../dist-renderer/public/index.html')}`);
+    });
   }
 
   mainWindow.on('closed', () => {

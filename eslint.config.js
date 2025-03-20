@@ -1,7 +1,8 @@
 // eslint.config.js
+import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import reactPlugin from 'eslint-plugin-react';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
+import reactHooks from 'eslint-plugin-react-hooks';
 
 export default [
   // Global configuration for all JavaScript/TypeScript files
@@ -18,6 +19,7 @@ export default [
     },
     plugins: {
       react: reactPlugin,
+      'react-hooks': reactHooks,
       '@typescript-eslint': tsPlugin
     },
     rules: {
@@ -27,6 +29,7 @@ export default [
       
       // React-specific rules
       'react/react-in-jsx-scope': 'off', // Not needed in React 17+
+      ...reactHooks.configs.recommended.rules,
       
       // TypeScript-specific rules
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
