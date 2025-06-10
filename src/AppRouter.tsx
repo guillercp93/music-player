@@ -1,10 +1,7 @@
 import React from 'react';
 import { HashRouter, Navigate, Route } from 'react-router-dom';
-import { Playlists } from './components/Library/Playlists';
-import { Albums } from './components/Library/Albums';
-import { Cassette } from './components/Player/Cassette';
-import { SongCover } from './components/Player/Cover';
 import { RoutesNotFound } from './components/RoutesNotFound/RoutesNotFound';
+import { AlbumList } from './Containers/AlbumList';
 
 interface Props {
   children: React.ReactNode;
@@ -15,15 +12,7 @@ export const AppRouter = ({ children }: Props) => {
     <HashRouter>
       <RoutesNotFound>
         <Route path="/" element={<Navigate to="/albums" />} />
-        <Route path="/albums" element={<Albums />} />
-        <Route path="/playlists" element={<Playlists />} />
-        <Route
-          path="/player"
-          element={
-            <SongCover coverUrl={''} isPlaying={false} title={''} artist={''} />
-          }
-        />
-        <Route path="/cassette" element={<Cassette />} />
+        <Route path="/albums" element={<AlbumList />} />
       </RoutesNotFound>
       {children}
     </HashRouter>

@@ -11,3 +11,7 @@ export * from './play-song-icon';
 export * from './pause-song-icon';
 export * from './light-mode-icon';
 export * from './dark-mode-icon';
+export * from './volume-full-icon';
+export * from './volume-low-icon';
+export * from './volume-off-icon';
+export * from './singer-icon';

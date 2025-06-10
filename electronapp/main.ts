@@ -10,10 +10,10 @@ const __dirname = path.dirname(__filename);
 let mainWindow: BrowserWindow | null = null;
 
 const createWindow = (): void => {
-  const { width, height } = screen.getPrimaryDisplay().size;
+  const { width, height } = screen.getPrimaryDisplay().bounds;
   mainWindow = new BrowserWindow({
     width: width/3,
-    height,
+    height: height * 2,
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -24,7 +24,7 @@ const createWindow = (): void => {
 
   if (process.env.NODE_ENV === 'development') {
     // In development, load the URL served by Vite (adjust URL if needed)
-    mainWindow.loadURL('http://localhost:4173/public/index.html');
+    mainWindow.loadURL('http://localhost:5173/public/index.html');
     mainWindow.webContents.openDevTools();
   } else {
     // In production, load the built index.html file from the renderer output folder

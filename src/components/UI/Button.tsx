@@ -33,11 +33,9 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }: ButtonProps): React.ReactElement => {
   const baseClasses = `p-2
-    hover:bg-[var(--bg-hover)]
-    dark:hover:bg-gray-700
-    cursor-pointer
     text-[var(--text-primary)]
     transition-colors duration-200
+    ${props.disabled ? 'opacity-50' : 'cursor-pointer hover:bg-[var(--bg-hover)] dark:hover:bg-gray-700'}
     `;
 
   return (
