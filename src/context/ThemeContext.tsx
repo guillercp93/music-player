@@ -1,3 +1,13 @@
+/**
+ * Provides a theme context to the application.
+ *
+ * The theme context stores the current theme of the application, which can be
+ * either 'light' or 'dark'. It also provides a function to toggle the theme.
+ *
+ * This context is used by the `ThemeProvider` component to set the theme of the
+ * application.
+ */
+
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { ELECTRON_API } from '../utils/constants';
 
@@ -13,6 +23,13 @@ const ThemeContext = createContext<ThemeContextType>({
   toggleTheme: () => {},
 });
 
+/**
+ * A React component that provides a theme context to the application.
+ *
+ * @param {React.ReactNode} children - The content to be rendered within the
+ *     `ThemeProvider` component.
+ * @returns {React.ReactElement} A React element for the theme provider.
+ */
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {

@@ -6,7 +6,7 @@
   --text-primary: #1a1a1a;
   --text-secondary: #4a4a4a;
   --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
+  --bg-secondary: #eaecec;
   --bg-hover: #b6b2b28c;
   --accent-color: #6b7280;
 }
@@ -25,6 +25,7 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-mono);
+  overscroll-behavior: none;
   transition: color 200ms, background-color 200ms;
 }
 

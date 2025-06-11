@@ -20,6 +20,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
  */
 interface LayoutProps {
   children: React.ReactNode;
+  title?: string;
 }
 
 /**
@@ -32,6 +33,7 @@ interface LayoutProps {
  */
 export const Layout: React.FC<LayoutProps> = ({
   children,
+  title,
 }: LayoutProps): React.ReactElement => {
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
@@ -67,8 +69,13 @@ export const Layout: React.FC<LayoutProps> = ({
 
       <div className="flex flex-grow">
         <aside className="bg-secondary shadow-md"></aside>
-        <main className="flex-grow container mx-auto p-2">
-          {children || <p>No content available</p>}
+        <main className="flex-grow">
+          <div className="container mx-auto px-4 py-8">
+            <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-4">
+              {title}
+            </h1>
+            {children || <p>No content available</p>}
+          </div>
         </main>
       </div>
       <footer className="px-4 py-2 bg-[var(--bg-secondary)] shadow-md">
