@@ -19,7 +19,7 @@ export const InLineBox = ({
   return (
     <div className={customClass}>
       <div className="flex flex-row items-center justify-between bg-[var(--bg-secondary)] px-3 py-2 rounded-xl">
-        <img src={song.imageURL} alt={song.title} className="w-12 h-12 mr-3" />
+        <img src={song.imageURL} alt={song.title} className="w-12 h-12 mr-3 rounded-lg" />
         <span className="font-semibold truncate whitespace-nowrap w-70">
           {song.title}
         </span>

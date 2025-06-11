@@ -102,7 +102,7 @@ export const Layout: React.FC<LayoutProps> = ({
             />
           </Tooltip>
         </div>
-        <p>Guillermo Castillo © {new Date().getFullYear()}</p>
+        <a href="https://github.com/guillercp93" target="_blank" rel="noreferrer">@guillercp93</a> &copy; {new Date().getFullYear()}
       </footer>
     </div>
   );
