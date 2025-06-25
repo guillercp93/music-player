@@ -28,39 +28,3 @@ body {
   overscroll-behavior: none;
   transition: color 200ms, background-color 200ms;
 }
-
-.card {
-  background-color: var(--bg-secondary);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
-}
-
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-  border-radius: 4px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: var(--bg-primary);
-  border-radius: 4px;
-  transition: background 0.2s ease;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--bg-primary);
-}
-
-/* Corner */
-::-webkit-scrollbar-corner {
-  background: var(--bg-primary);
-}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { PlayerIcon } from '../icons';
+import { Button } from './Button';
 /**
  * A React component that renders a box with a background image, title, description,
  * and a play button. This component is designed to be used in a grid layout.
@@ -48,10 +49,12 @@ export const Box = ({ image, title, description, customClass }: BoxProps) => {
           {description}
         </p>
       )}
-      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 rounded-xl">
-        <button className="w-7 h-7 bg-[var(--accent)] hover:bg-[var(--accent-hover)] rounded-full flex items-center justify-center text-white transform transition-all duration-200 hover:scale-110">
-          <PlayerIcon customClass="h-7 w-7" />
-        </button>
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40 rounded-xl">
+        <Button
+          icon={<PlayerIcon customClass="text-white h-10 w-10" />}
+          aria-label="Play"
+          className="text-2xl rounded-full flex items-center justify-center transform transition-all duration-500 hover:scale-130 bg-transparent hover:bg-transparent"
+        />
       </div>
     </div>
   );

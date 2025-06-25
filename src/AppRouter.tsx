@@ -1,9 +1,7 @@
 import React from 'react';
-import { HashRouter, Navigate, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route } from 'react-router-dom';
 import { RoutesNotFound } from './components/RoutesNotFound/RoutesNotFound';
-import { AlbumList } from './Containers/AlbumList';
-import { ArtistList } from './Containers/ArtistList';
-import { SongList } from './Containers/SongList';
+import { AlbumList, ArtistList, Player, SongList } from './Containers';
 
 /**
  * The properties for the `AppRouter` component.
@@ -30,14 +28,15 @@ interface Props {
  */
 export const AppRouter = ({ children }: Props) => {
   return (
-    <HashRouter>
+    <Router>
       <RoutesNotFound>
         <Route path="/" element={<Navigate to="/albums" />} />
         <Route path="/albums" element={<AlbumList />} />
         <Route path="/artists" element={<ArtistList />} />
         <Route path="/songs" element={<SongList />} />
+        <Route path="/player" element={<Player />} />
       </RoutesNotFound>
       {children}
-    </HashRouter>
+    </Router>
   );
 };

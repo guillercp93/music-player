@@ -11,7 +11,7 @@ import { InLineBox } from '../components/UI/InLineBox';
 export const SongList = () => {
   return (
     <Layout title="Your Songs">
-      <div className="grid grid-cols-1 h-170 overflow-auto">
+      <div className="grid grid-cols-1 h-[calc(100vh-285px)] overflow-y-auto">
         {songs
           .sort((a, b) => a.title.localeCompare(b.title))
           .map((data) => (

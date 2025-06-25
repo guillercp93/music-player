@@ -11,6 +11,7 @@ import {
 import { Tooltip } from '../components/UI/Tooltip';
 import { useTheme } from '../context/ThemeContext';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { MiniPlayer } from '../components/MiniPlayer/MiniPlayer';
 
 /**
  * Props for the `Layout` component.
@@ -39,19 +40,20 @@ export const Layout: React.FC<LayoutProps> = ({
   const location = useLocation();
   const navigate = useNavigate();
   const isRootOr404 = location.pathname === '/' || location.pathname === '/404';
-  console.log(location.pathname, isRootOr404);
 
   const handleBack = (): void => {
-    if (window.history.length > 1) {
-      window.history.back();
-    } else {
-      console.warn('No back history available');
+    if (window.history.length > 1 && location.pathname !== '/') {
+      navigate(-1);
     }
+  };
+
+  const handleNavigate = (path: string): void => {
+    navigate(path, { viewTransition: true });
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-primary text-primary">
-      <header className="bg-secondary p-4 shadow-md">
+      <header className="bg-secondary p-2 shadow-md">
         <div className="container mx-auto flex justify-between items-center">
           <Button
             icon={<BackIcon />}
@@ -67,10 +69,10 @@ export const Layout: React.FC<LayoutProps> = ({
         </div>
       </header>
 
-      <div className="flex flex-grow">
+      <div className="flex">
         <aside className="bg-secondary shadow-md"></aside>
         <main className="flex-grow">
-          <div className="container mx-auto px-4 py-8">
+          <div className="container mx-auto px-2 py-4">
             <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-4">
               {title}
             </h1>
@@ -78,31 +80,39 @@ export const Layout: React.FC<LayoutProps> = ({
           </div>
         </main>
       </div>
+      <MiniPlayer />
       <footer className="px-4 py-2 bg-[var(--bg-secondary)] shadow-md">
         <div className="container mx-auto flex justify-center items-center gap-4">
           <Tooltip text="Albums" position="top">
             <Button
               icon={<AlbumIcon />}
               aria-label="Albums"
-              onClick={() => navigate('/albums')}
+              onClick={() => handleNavigate('/albums')}
             />
           </Tooltip>
           <Tooltip text="Artists" position="top">
             <Button
               icon={<SingerIcon />}
               aria-label="Artists"
-              onClick={() => navigate('/artists')}
+              onClick={() => handleNavigate('/artists')}
             />
           </Tooltip>
           <Tooltip text="Songs" position="top">
             <Button
               icon={<SongListIcon />}
               aria-label="Songs"
-              onClick={() => navigate('/songs')}
+              onClick={() => handleNavigate('/songs')}
             />
           </Tooltip>
         </div>
-        <a href="https://github.com/guillercp93" target="_blank" rel="noreferrer">@guillercp93</a> &copy; {new Date().getFullYear()}
+        <a
+          href="https://github.com/guillercp93"
+          target="_blank"
+          rel="noreferrer"
+        >
+          @guillercp93
+        </a>{' '}
+        &copy; {new Date().getFullYear()}
       </footer>
     </div>
   );

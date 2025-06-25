@@ -1,6 +1,7 @@
 import React from 'react';
 import { Song } from '../../Interfaces/Song';
-
+import { Button } from './Button';
+import { PlayerIcon } from '../icons';
 /**
  * A React component that displays a song in an in-line box, with the album art,
  * title, artist name, and duration.
@@ -19,7 +20,21 @@ export const InLineBox = ({
   return (
     <div className={customClass}>
       <div className="flex flex-row items-center justify-between bg-[var(--bg-secondary)] px-3 py-2 rounded-xl">
-        <img src={song.imageURL} alt={song.title} className="w-12 h-12 mr-3 rounded-lg" />
+        <div className="relative w-12 h-12 mr-3 group">
+          <img
+            srcSet={song.imageURL}
+            alt={song.title}
+            loading="lazy"
+            className="w-full h-full rounded-lg"
+          />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/40 rounded-lg">
+            <Button
+              icon={<PlayerIcon customClass="text-white h-6 w-6" />}
+              aria-label="Play"
+              className="rounded-full flex items-center justify-center transform transition-all duration-300 hover:scale-125 hover:bg-transparent p-0"
+            />
+          </div>
+        </div>
         <span className="font-semibold truncate whitespace-nowrap w-70">
           {song.title}
         </span>

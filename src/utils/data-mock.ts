@@ -58,36 +58,42 @@ export const artists: Artist[] = [
     imageURL:
       'https://i.scdn.co/image/ab67616100005174b5c8399bd5cae167e7aa2572',
     name: 'The Hollow Sound',
+    albumID: 2,
   },
   {
     id: 2,
     imageURL:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqDSflbyeL_PUmASkyDHNfcxepGfNKs5GsDA&s',
     name: 'Nova Trails',
+    albumID: 4,
   },
   {
     id: 3,
     imageURL:
       'https://i1.sndcdn.com/avatars-8EoGy4kiKk70rpOX-WiDkJg-t1080x1080.jpg',
     name: 'Aria Bloom',
+    albumID: 3,
   },
   {
     id: 4,
     imageURL:
       'https://upload.wikimedia.org/wikipedia/commons/1/1d/Zephyr_%281%29.jpg',
     name: 'Zephyr Code',
+    albumID: 5,
   },
   {
     id: 5,
     imageURL:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVfPauLsuHmT58eiyeel3L4kntLaL6K-F5EQ&s',
     name: 'Echo Drive',
+    albumID: 6,
   },
   {
     id: 6,
     imageURL:
       'https://i.scdn.co/image/ab67616100005174f06e772b714c92b1ab5d7e5b',
     name: 'Luna Waves',
+    albumID: 1,
   },
 ];
 
