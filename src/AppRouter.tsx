@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Navigate, Route } from 'react-router-dom';
+import { HashRouter as Router, Navigate, Route } from 'react-router-dom';
 import { RoutesNotFound } from './components/RoutesNotFound/RoutesNotFound';
 import { AlbumList, ArtistList, Player, SongList } from './Containers';
 

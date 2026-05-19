@@ -5,6 +5,7 @@ export function setupIpcMain() {
   ipcMain.handle('get-default-theme', async () => {
     // Get current theme of PC
     const systemTheme = nativeTheme.shouldUseDarkColors ? 'dark' : 'light';
+    // eslint-disable-next-line no-console
     console.log(`System theme: ${systemTheme}`);
     return systemTheme;
   });

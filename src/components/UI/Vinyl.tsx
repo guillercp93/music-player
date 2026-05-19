@@ -13,6 +13,9 @@ interface VinylProps {
   rotationSpeed?: number;
 }
 
+/**
+ * Subcomponent rendering subtle circular grooves representing traditional vinyl record texture.
+ */
 const VinylGrooves = () => (
   <>
     <div className="absolute inset-0 rounded-full border-2 border-gray-700 opacity-30" />
@@ -21,6 +24,12 @@ const VinylGrooves = () => (
   </>
 );
 
+/**
+ * Subcomponent rendering the center red-shaded custom paper label of the vinyl.
+ * Shows the track's abbreviated title with a vintage rotation offset.
+ *
+ * @param props - Center label parameters containing song title.
+ */
 const VinylCenterLabel = ({ title = 'Title Song' }: { title?: string }) => (
   <div className="absolute inset-0 flex items-center justify-center">
     <div className="w-1/4 h-1/4 rounded-full bg-gradient-to-br from-red-900 to-red-700 flex items-center justify-center">
@@ -33,6 +42,9 @@ const VinylCenterLabel = ({ title = 'Title Song' }: { title?: string }) => (
   </div>
 );
 
+/**
+ * Subcomponent rendering outer physical layers and shiny gloss reflection borders of a vinyl record.
+ */
 const VinylBorders = () => (
   <>
     <div className="absolute inset-0 rounded-full border-8 border-gray-800 opacity-70" />
@@ -41,6 +53,12 @@ const VinylBorders = () => (
   </>
 );
 
+/**
+ * Premium rotating vinyl disc component.
+ * Displays album cover art as the record cover, features physical grooving textures,
+ * a centered retro track title label, and dynamically rotates/stops to match player playback.
+ * Registers standard viewTransitionName tags for immersive navigation flows.
+ */
 export const Vinyl: React.FC<VinylProps> = ({
   imageURL,
   isPlaying,

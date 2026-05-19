@@ -19,4 +19,6 @@ export interface Song {
   albumID: number;
   artistID: number;
   imageURL: string;
+  audioUrl?: string;
+  lyrics?: string;
 }
